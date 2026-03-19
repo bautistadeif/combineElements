@@ -747,6 +747,19 @@ function buildScholarReference(aName, bName, detail) {
     };
 }
 
+function setText(el, value) {
+    if (el) {
+        el.textContent = value;
+    }
+}
+
+function setLink(linkEl, label, url) {
+    if (linkEl) {
+        linkEl.textContent = label;
+        linkEl.href = url;
+    }
+}
+
 function buildGenericExplanation(a, b, aName, bName) {
     const aClass = classifyElement(a);
     const bClass = classifyElement(b);
@@ -896,42 +909,40 @@ function combineElements() {
     const aName = getElementName(a);
     const bName = getElementName(b);
     const inputLabel = `${aName} (${a}) + ${bName} (${b})`;
-    inputPair.textContent = inputLabel;
+    setText(inputPair, inputLabel);
 
     const key = getCombinationKey(a, b);
     const match = knownCombinations[key];
     const detail = match || buildGenericExplanation(a, b, aName, bName);
 
-    productName.textContent = detail.productName;
-    productType.textContent = detail.productType;
-    reactionEquation.textContent = detail.reactionEquation;
-    newElementStatus.textContent = detail.newElementStatus;
-    atomBehavior.textContent = detail.atomBehavior;
-    energyBehavior.textContent = detail.energyBehavior;
-    observableResult.textContent = detail.observableResult;
-    productConditions.textContent = detail.conditions;
-    safetyNotes.textContent = detail.safetyNotes;
-    commonUses.textContent = detail.commonUses;
-    fullExplanation.textContent = detail.fullExplanation;
+    setText(productName, detail.productName);
+    setText(productType, detail.productType);
+    setText(reactionEquation, detail.reactionEquation);
+    setText(newElementStatus, detail.newElementStatus);
+    setText(atomBehavior, detail.atomBehavior);
+    setText(energyBehavior, detail.energyBehavior);
+    setText(observableResult, detail.observableResult);
+    setText(productConditions, detail.conditions);
+    setText(safetyNotes, detail.safetyNotes);
+    setText(commonUses, detail.commonUses);
+    setText(fullExplanation, detail.fullExplanation);
 
     const reference = buildScholarReference(aName, bName, detail) || fallbackReference;
-    referenceLink.textContent = reference.label;
-    referenceLink.href = reference.url;
+    setLink(referenceLink, reference.label, reference.url);
 
-    popupInputPair.textContent = inputLabel;
-    popupProductName.textContent = detail.productName;
-    popupProductType.textContent = detail.productType;
-    popupReactionEquation.textContent = detail.reactionEquation;
-    popupNewElementStatus.textContent = detail.newElementStatus;
-    popupAtomBehavior.textContent = detail.atomBehavior;
-    popupEnergyBehavior.textContent = detail.energyBehavior;
-    popupObservableResult.textContent = detail.observableResult;
-    popupProductConditions.textContent = detail.conditions;
-    popupSafetyNotes.textContent = detail.safetyNotes;
-    popupCommonUses.textContent = detail.commonUses;
-    popupFullExplanation.textContent = detail.fullExplanation;
-    popupReferenceLink.textContent = reference.label;
-    popupReferenceLink.href = reference.url;
+    setText(popupInputPair, inputLabel);
+    setText(popupProductName, detail.productName);
+    setText(popupProductType, detail.productType);
+    setText(popupReactionEquation, detail.reactionEquation);
+    setText(popupNewElementStatus, detail.newElementStatus);
+    setText(popupAtomBehavior, detail.atomBehavior);
+    setText(popupEnergyBehavior, detail.energyBehavior);
+    setText(popupObservableResult, detail.observableResult);
+    setText(popupProductConditions, detail.conditions);
+    setText(popupSafetyNotes, detail.safetyNotes);
+    setText(popupCommonUses, detail.commonUses);
+    setText(popupFullExplanation, detail.fullExplanation);
+    setLink(popupReferenceLink, reference.label, reference.url);
 
     showResultModal();
 }
