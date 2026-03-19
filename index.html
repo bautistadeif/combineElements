@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Expelements" />
+    <title>Expelements</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div id="ambientLayer" aria-hidden="true"></div>
+    <main class="container">
+        <h1>Expelements</h1>
+        <p class="subtitle">Pick two elements to see what compound or behavior can happen.</p>
+        <p class="creator-credit">Created by Expelements</p>
+
+        <div class="top-layout">
+            <section class="panel">
+                <h2>Combine Elements</h2>
+                <div class="row">
+                    <label for="elementA">Element A</label>
+                    <select id="elementA"></select>
+                </div>
+
+                <div class="row">
+                    <label for="elementB">Element B</label>
+                    <select id="elementB"></select>
+                </div>
+
+                <button id="combineBtn">Combine</button>
+            </section>
+
+            <section class="panel result" id="resultPanel">
+                <h2>Result</h2>
+                <p><strong>Input:</strong> <span id="inputPair">-</span></p>
+                <p><strong>Product name:</strong> <span id="productName">-</span></p>
+                <div class="result-grid">
+                    <p><strong>What it is:</strong> <span id="productType">-</span></p>
+                    <p><strong>Balanced equation:</strong> <span id="reactionEquation">-</span></p>
+                    <p><strong>New element formed?</strong> <span id="newElementStatus">-</span></p>
+                    <p><strong>What happens to atoms:</strong> <span id="atomBehavior">-</span></p>
+                    <p><strong>Energy behavior:</strong> <span id="energyBehavior">-</span></p>
+                    <p><strong>Observable result:</strong> <span id="observableResult">-</span></p>
+                    <p><strong>Conditions:</strong> <span id="productConditions">-</span></p>
+                    <p><strong>Safety notes:</strong> <span id="safetyNotes">-</span></p>
+                    <p><strong>Common uses:</strong> <span id="commonUses">-</span></p>
+                    <p><strong>Full explanation:</strong> <span id="fullExplanation">-</span></p>
+                    <p><strong>Reference:</strong> <a id="referenceLink"
+                            href="https://scholar.google.com/scholar?q=chemical+bonding+element+reactions"
+                            target="_blank" rel="noopener noreferrer">Google Scholar: chemical bonding and element
+                            reactions</a></p>
+                </div>
+                <button id="openResultPopupBtn" type="button">Open Result Popup</button>
+            </section>
+        </div>
+
+        <section class="panel">
+            <h2>All 118 Elements</h2>
+            <div id="elementsList" class="elements-list"></div>
+        </section>
+    </main>
+
+    <div class="details-modal hidden" id="elementDetails" aria-hidden="true" role="dialog"
+        aria-labelledby="detailsTitle">
+        <div class="details-modal-card">
+            <button id="detailsBackBtn" class="details-back-btn" type="button"
+                aria-label="Back to elements list">Back</button>
+            <h3 id="detailsTitle">Selected Element Details</h3>
+            <p class="element-details-hint">Tap Back to return to the 118 elements list.</p>
+            <div class="detail-grid">
+                <p><strong>Model number:</strong> <span id="detailModelNumber">-</span></p>
+                <p><strong>Atomic number:</strong> <span id="detailAtomicNumber">-</span></p>
+                <p><strong>Model name:</strong> <span id="detailModelName">-</span></p>
+                <p><strong>Symbol:</strong> <span id="detailSymbol">-</span></p>
+                <p><strong>What is it:</strong> <span id="detailType">-</span></p>
+                <p><strong>Important details:</strong> <span id="detailImportant">-</span></p>
+                <p><strong>When discovered:</strong> <span id="detailDiscoveryWhen">-</span></p>
+                <p><strong>Why it was discovered:</strong> <span id="detailDiscoveryWhy">-</span></p>
+                <p><strong>Discovery context:</strong> <span id="detailDiscoveryContext">-</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="details-modal hidden" id="resultModal" aria-hidden="true" role="dialog"
+        aria-labelledby="resultModalTitle">
+        <div class="details-modal-card result-modal-card">
+            <button id="resultBackBtn" class="details-back-btn" type="button"
+                aria-label="Close result popup">Back</button>
+            <h3 id="resultModalTitle">Combination Result</h3>
+            <p class="element-details-hint">Result popup for easier reading.</p>
+            <div class="detail-grid">
+                <p><strong>Input:</strong> <span id="popupInputPair">-</span></p>
+                <p><strong>Product name:</strong> <span id="popupProductName">-</span></p>
+                <p><strong>What it is:</strong> <span id="popupProductType">-</span></p>
+                <p><strong>Balanced equation:</strong> <span id="popupReactionEquation">-</span></p>
+                <p><strong>New element formed?</strong> <span id="popupNewElementStatus">-</span></p>
+                <p><strong>What happens to atoms:</strong> <span id="popupAtomBehavior">-</span></p>
+                <p><strong>Energy behavior:</strong> <span id="popupEnergyBehavior">-</span></p>
+                <p><strong>Observable result:</strong> <span id="popupObservableResult">-</span></p>
+                <p><strong>Conditions:</strong> <span id="popupProductConditions">-</span></p>
+                <p><strong>Safety notes:</strong> <span id="popupSafetyNotes">-</span></p>
+                <p><strong>Common uses:</strong> <span id="popupCommonUses">-</span></p>
+                <p><strong>Full explanation:</strong> <span id="popupFullExplanation">-</span></p>
+                <p><strong>Reference:</strong> <a id="popupReferenceLink"
+                        href="https://scholar.google.com/scholar?q=chemical+bonding+element+reactions" target="_blank"
+                        rel="noopener noreferrer">Google Scholar: chemical bonding and element reactions</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
