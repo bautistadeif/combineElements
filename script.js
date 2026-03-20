@@ -309,6 +309,9 @@ const detailDiscoveryWhy = document.getElementById("detailDiscoveryWhy");
 const detailDiscoveryContext = document.getElementById("detailDiscoveryContext");
 const detailsBackBtn = document.getElementById("detailsBackBtn");
 
+let lastFocusBeforeElementDetails = null;
+let lastFocusBeforeResultModal = null;
+
 const fallbackReference = {
     label: "Google Scholar: chemical bonding and element reactions",
     url: "https://scholar.google.com/scholar?q=chemical+bonding+element+reactions"
@@ -711,13 +714,28 @@ function showElementDetails(symbol) {
         card.classList.toggle("is-active", card.dataset.symbol === symbol);
     });
 
+    lastFocusBeforeElementDetails = document.activeElement;
     elementDetails.classList.remove("hidden");
     elementDetails.setAttribute("aria-hidden", "false");
+    elementDetails.removeAttribute("inert");
+
+    if (detailsBackBtn) {
+        detailsBackBtn.focus();
+    }
 }
 
 function hideElementDetails() {
+    if (elementDetails && elementDetails.contains(document.activeElement)) {
+        document.activeElement.blur();
+    }
+
     elementDetails.classList.add("hidden");
     elementDetails.setAttribute("aria-hidden", "true");
+    elementDetails.setAttribute("inert", "");
+
+    if (lastFocusBeforeElementDetails && typeof lastFocusBeforeElementDetails.focus === "function") {
+        lastFocusBeforeElementDetails.focus();
+    }
 }
 
 function showResultModal() {
@@ -725,8 +743,14 @@ function showResultModal() {
         return;
     }
 
+    lastFocusBeforeResultModal = document.activeElement;
     resultModal.classList.remove("hidden");
     resultModal.setAttribute("aria-hidden", "false");
+    resultModal.removeAttribute("inert");
+
+    if (resultBackBtn) {
+        resultBackBtn.focus();
+    }
 }
 
 function hideResultModal() {
@@ -734,8 +758,19 @@ function hideResultModal() {
         return;
     }
 
+    if (resultModal.contains(document.activeElement)) {
+        document.activeElement.blur();
+    }
+
     resultModal.classList.add("hidden");
     resultModal.setAttribute("aria-hidden", "true");
+    resultModal.setAttribute("inert", "");
+
+    if (lastFocusBeforeResultModal && typeof lastFocusBeforeResultModal.focus === "function") {
+        lastFocusBeforeResultModal.focus();
+    } else if (combineBtn) {
+        combineBtn.focus();
+    }
 }
 
 function buildScholarReference(aName, bName, detail) {
@@ -993,5 +1028,4 @@ window.addEventListener("keydown", (event) => {
 if (elements.length > 0) {
     elementA.value = "He";
     elementB.value = "Na";
-    combineElements();
 }
