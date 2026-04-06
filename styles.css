@@ -320,6 +320,29 @@ button:hover {
     animation-delay: 1.6s;
 }
 
+.db-table-wrapper {
+    overflow-x: auto;
+}
+
+.db-example-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fffdf9;
+}
+
+.db-example-table th,
+.db-example-table td {
+    border: 1px solid #d8c3ab;
+    text-align: left;
+    padding: 10px;
+    vertical-align: top;
+    line-height: 1.45;
+}
+
+.db-example-table th {
+    background: #f3e6d8;
+}
+
 @keyframes drift {
     0% {
         transform: translate3d(var(--x-start), 0, 0) rotate(0deg);
