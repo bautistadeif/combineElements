@@ -37,6 +37,48 @@
             <h2>All 118 Elements</h2>
             <div id="elementsList" class="elements-list"></div>
         </section>
+
+        <section class="panel">
+            <h2>Example tables in game database</h2>
+            <div class="db-table-wrapper">
+                <table class="db-example-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Table name</th>
+                            <th scope="col">Primary key</th>
+                            <th scope="col">Sample columns</th>
+                            <th scope="col">Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>players</td>
+                            <td>player_id</td>
+                            <td>username, level, xp, created_at</td>
+                            <td>Stores each player profile and progression data.</td>
+                        </tr>
+                        <tr>
+                            <td>matches</td>
+                            <td>match_id</td>
+                            <td>map_name, mode, started_at, ended_at</td>
+                            <td>Stores metadata for each game session.</td>
+                        </tr>
+                        <tr>
+                            <td>inventory_items</td>
+                            <td>inventory_item_id</td>
+                            <td>player_id, item_id, quantity, rarity</td>
+                            <td>Tracks which items each player owns.</td>
+                        </tr>
+                        <tr>
+                            <td>leaderboard_entries</td>
+                            <td>entry_id</td>
+                            <td>player_id, season, rank, score</td>
+                            <td>Stores ranking snapshots for leaderboard views.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
 
     <div class="details-modal hidden" id="elementDetails" aria-hidden="true" role="dialog"
